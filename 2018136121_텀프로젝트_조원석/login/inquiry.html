@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script> <!-- sns 아이콘 사용을 위함 -->
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>  <!-- 최신버전 jquery를 사용하기 위함  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> <!-- alert 창을 예쁘게 바꾸기 위함 -->
+    <script src="login.js"></script>
+    <link rel="stylesheet" href="./login.css">
+</head>
+<body class="fade">
+    <video id="loginVideo" muted autoplay loop>
+        <source src="../login_.mp4" type="video/mp4">
+    </video>
+    <div class="wrap">
+        <div class="login">
+            <h2>Inquary</h2>
+            <div class="contact-area bg-color1 p-t-130 p-b-130">
+                <div class="container">
+                   <article class=""  data-aos="fade-up">
+            
+                      <div class="row">
+                         <div class="col-md-7">
+                            <div class="comment-form">
+                               <script data-cfasync="false" type="text/javascript" src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script>
+                               <form id="emailForm" class="gform" method="POST" data-email="iqeq126@koreatech.ac.kr" 
+                                     action="https://script.google.com/macros/s/AKfycbz4b92OLEhHLfhEW3HBkSNyJWQmp2fYFYsyRBdAOxSj55aHsloEKaNvHoycENaEmaE5/exec">
+                                  <div class="form-row">
+                                     <div class="col-md-12">
+                                        <div class="form-row">
+                                           <div class="col-md-12">
+                                              <div class="form-group">
+                                                <h4>E-mail</h4>
+                                                 <input type="text" class="form-control" id="senderEmail" name="senderEmail" placeholder="ex) ~~~~@gmail.com" required>
+                                              </div>
+                                           </div>
+                                        </div>
+                                        <div class="form-row">
+                                           <div class="col-md-12">
+                                              <div class="form-group">
+                                                <h4>Name</h4>
+                                                 <input type="text" class="form-control" id="senderName" name="senderName"placeholder="Your Name" required>
+                                              </div>
+                                           </div>
+                                        </div>
+                                        <div class="form-row">
+                                           <div class="col-md-12">
+                                              <div class="form-group">
+                                                <h4>Message</h4>
+                                                 <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your Message"></textarea>
+                                              </div>
+                                           </div>
+                                        </div>
+                                        <div class="login_etc">
+                                            <div class="login_Join">
+                                                <a href="login.html">login</a>
+                                            </div>
+                                            <div class="forgot_pw">
+                                            <a href="Join.html">Join</a>
+                                        </div>
+                                        </div>
+                                        <script type="text/javascript">
+                                           (function() {
+                                              // get all data in form and return object
+                                              function getFormData(form) {
+                                                 var elements = form.elements;
+                                                 var honeypot;
+             
+                                                 var fields = Object.keys(elements).filter(function(k) {
+                                                    if (elements[k].name === "honeypot") {
+                                                    honeypot = elements[k].value;
+                                                    return false;
+                                                    }
+                                                    return true;
+                                                 }).map(function(k) {
+                                                    if(elements[k].name !== undefined) {
+                                                    return elements[k].name;
+                                                    // special case for Edge's html collection
+                                                    }else if(elements[k].length > 0){
+                                                    return elements[k].item(0).name;
+                                                    }
+                                                 }).filter(function(item, pos, self) {
+                                                    return self.indexOf(item) == pos && item;
+                                                 });
+             
+                                                 var formData = {};
+                                                 fields.forEach(function(name){
+                                                    var element = elements[name];
+             
+                                                    // singular form elements just have one value
+                                                    formData[name] = element.value;
+             
+                                                    // when our element has multiple items, get their values
+                                                    if (element.length) {
+                                                    var data = [];
+                                                    for (var i = 0; i < element.length; i++) {
+                                                       var item = element.item(i);
+                                                       if (item.checked || item.selected) {
+                                                          data.push(item.value);
+                                                       }
+                                                    }
+                                                    formData[name] = data.join(', ');
+                                                    }
+                                                 });
+             
+                                                 // add form-specific values into the data
+                                                 formData.formDataNameOrder = JSON.stringify(fields);
+                                                 formData.formGoogleSheetName = form.dataset.sheet || "responses"; // default sheet name
+                                                 formData.formGoogleSendEmail
+                                                    = form.dataset.email || ""; // no email by default
+             
+                                                 return {data: formData, honeypot: honeypot};
+                                              }
+             
+                                              function handleFormSubmit(event) {  // handles form submit without any jquery
+                                                 event.preventDefault();           // we are submitting via xhr below
+                                                 var form = event.target;
+                                                 var formData = getFormData(form);
+                                                 var data = formData.data;
+             
+                                                 // If a honeypot field is filled, assume it was done so by a spam bot.
+                                                 if (formData.honeypot) {
+                                                    return false;
+                                                 }
+             
+                                                 disableAllButtons(form);
+                                                 var url = form.action;
+                                                 var xhr = new XMLHttpRequest();
+                                                 xhr.open('POST', url);
+                                                 // xhr.withCredentials = true;
+                                                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                                                 xhr.onreadystatechange = function() {
+                                                    if (xhr.readyState === 4 && xhr.status === 200) {
+                                                       form.reset();
+                                                       var formElements = form.querySelector(".form-elements")
+                                                       if (formElements) {
+                                                          formElements.style.display = "none"; // hide form
+                                                       }
+                                                       var thankYouMessage = form.querySelector(".thankyou_message");
+                                                       if (thankYouMessage) {
+                                                          thankYouMessage.style.display = "block";
+                                                          alert("메일 전송에 성공했습니다. 확인 후 회신드리겠습니다.");
+                                                       }
+                                                    }
+                                                 };
+                                                 // url encode form data for sending as post data
+                                                 var encoded = Object.keys(data).map(function(k) {
+                                                    return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
+                                                 }).join('&');
+                                                 xhr.send(encoded);
+                                              }
+             
+                                              function loaded() {
+                                                 // bind to the submit event of our form
+                                                 var forms = document.querySelectorAll("form.gform");
+                                                 for (var i = 0; i < forms.length; i++) {
+                                                    forms[i].addEventListener("submit", handleFormSubmit, false);
+                                                 }
+                                              };
+                                              document.addEventListener("DOMContentLoaded", loaded, false);
+             
+                                              function disableAllButtons(form) {
+                                                 var buttons = form.querySelectorAll("button");
+                                                 for (var i = 0; i < buttons.length; i++) {
+                                                    buttons[i].disabled = true;
+                                                 }
+                                              }
+                                              })();
+                                        </script>
+                                        <div class="form-group m-0">
+                                           <input id="btnSubmit" type="submit" value="submit" class="btn-submit mt-2"></input>
+                                        </div>
+                                     </div>
+                                  </div>
+             
+                                  <div style="display:none" class="thankyou_message">
+                                     <h2><em>Thanks</em> for contacting us! We will get back to you soon!</h2>
+                                  </div>
+                               </form>
+                            </div>
+                         </div>
+                      </div>
+                   </article>
+                </div>
+             </div>
+            <!--
+            <div id="content_id" name = "content_id" class="content_id">
+                <form name="titleForm" method="post">
+                <h4>Title</h4>
+                <input type="id" id="con_id" placeholder="title">
+                </form>
+            </div>
+            <div class="content_inquiry">
+                <h4>Contents</h4>
+                <form name="contentsForm" method="post">
+                    <textarea id="contents" placeholder="Put in your problem"></textarea>
+                </form>
+            </div>
+            <div class="login_etc">
+                <div class="login_Join">
+                    <a href="join.html" >Join</a>
+                </div>
+                <div class="forgot_pw">
+                <a href="inquiry.html" >Inquiry</a>
+            </div>
+            </div>
+            <div class = "inquiry_submit">
+                <input id="inquiryAlert" type="submit" value="submit">
+            </div>-->
+        </div>
+    </div>
+</body>
+</html>

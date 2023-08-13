@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <!--header-->
+<!--header-->
+<style>
+    #myheader { 
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 190px;
+}
+    #paper { padding-top: 180px;}
+    #pinterest_end { height: 2000px; }
+
+    @media (max-width: 919px) {
+        #pinterest_end {  height: 3200px; }
+        } 
+
+    /* 4줄 */
+    @media (min-width: 920px) and (max-width:1149px) {
+        #pinterest_end {  height: 2900px; }
+    } 
+
+    /* 5줄 */
+    @media (min-width:1150px) and (max-width:1379px) {
+        #pinterest_end {  height: 2600px; }
+    }
+
+    /* 6줄 */
+    @media (min-width:1380px) {
+        #pinterest_end { height: 2300px; }
+    }
+
+</style>
+<embed id="myheader" src="header.html" scrolling="no"
+    style="width: 100%;  overflow: hidden;"></embed>
+    <link rel="stylesheet" href="additional1.css">
+</head>
+<body>
+<embed id="pinterest_end" target="_top" src="./pinterest_end.html" scrolling="no"
+    style="width: 100%;  overflow: hidden;"></embed>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script> <!-- sns 아이콘 사용을 위함 -->
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>    <!-- 최신버전 jquery를 사용하기 위함  -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> <!-- alert 창을 예쁘게 바꾸기 위함 -->
+    <script src="login.js"></script>
+    <link rel="stylesheet" href="./login.css">
+</head>
+<body class="fade">
+    <video id="loginVideo" muted autoplay loop>
+        <source src="../login.mp4" type="video/mp4">
+    </video>
+    <div class="wrap">
+        <div class="login">
+            <h2>Log-in</h2>
+            <div class="login_sns">
+            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+            <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+            </div>
+            
+            <div id="login_id" name = "login_id" class="login_id">
+                <form name="idForm" method="post">
+                <h4>id</h4>
+                <input type="id" id="id" placeholder="6 and less than 20.">
+                </form>
+            </div>
+            <div class="login_pw">
+                <h4>Password</h4>
+                <form name="pwForm" method="post">
+                <input type="password" id="password" placeholder="********">
+                </form>
+            </div>
+            <div class="login_etc">
+                <div class="login_Join">
+                    <a href="join.html" >Join</a>
+                </div>
+                <div class="forgot_pw">
+                <a href="password.html" >Forgot Password?</a>
+            </div>
+            </div>
+            <div class = "login_submit">
+                <input id="loginAlert" type="submit" value="submit">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

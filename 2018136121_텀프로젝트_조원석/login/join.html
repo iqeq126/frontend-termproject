@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/53a8c415f1.js" crossorigin="anonymous"></script> <!-- sns 아이콘 사용을 위함 -->
+    <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script> <!-- alert 창을 예쁘게 바꾸기 위함 -->
+    <script src="login.js"></script>
+    <script>
+        var num;
+        // 비밀번호 검증
+        function isSame() {
+            var pw = document.getElementById("password").value;
+            var confirmPW= document.getElementById("password2").value;
+            if (pw == confirmPW){
+                document.getElementById("password").style.borderColor = 'blue';
+                document.getElementById("password2").style.borderColor = 'blue';
+            }
+            if (pw.length < 8 || pw.length > 20) {
+                document.getElementById("password").style.borderColor = 'red';
+                document.getElementById("password2").style.borderColor = 'red';
+                alert('비밀번호는 8글자 이상, 20글자 이하만 이용 가능합니다.'); 
+                document.getElementById('password').value=document.getElementById('password2').value=''; 
+             }
+             if(document.getElementById('password').value!='' && document.getElementById('password2').value!='') {
+                if(document.getElementById('password').value != document.getElementById('password2').value) {
+                    document.getElementById("password").style.borderColor = 'red';
+                document.getElementById("password2").style.borderColor = 'red';
+                    alert('비밀번호가 일치하지 않습니다.'); 
+                    document.getElementById('password2').value=''; 
+                }
+            }
+            
+        }
+        // 입력창 색깔 지정
+        function placeholderColor() {
+        let cid = document.getElementById('Certification');
+        let cer = document.getElementById('Certification').value;
+        let cer_length = document.getElementById('Certification').length;
+        if (cer_length == 0){
+            cid.style.borderColor = 'lightgray';
+        }
+        else if (cer == num){
+            cid.style.borderColor = 'blue';
+        }
+        else{
+            cid.style.borderColor = 'red';
+        }
+         }
+         // 검증 및 인증번호 보내기 및 남은 시간 알리미
+        function certify(){
+            num =Math.floor(Math.random() * (999999 - 100000)) + 100000;
+            alert( '인증번호는 ' + num + '입니다.');
+            var timeleft = 20;
+            var downloadTimer = setInterval(function(){
+                if(timeleft <= 0){
+                alert('다시 입력해주세요.')
+                clearInterval(downloadTimer);
+                }
+                document.getElementById('cer').innerHTML = 'Certification 남은 시간 :' + (timeleft) + '초';
+                timeleft -= 1;
+            }, 1000);   
+            
+        }
+    </script>
+    <link rel="stylesheet" href="./login.css">
+</head>
+<body class="fade">
+    <video id="loginVideo" muted autoplay loop>
+        <source src="../login.mp4" type="video/mp4">
+    </video>
+    <div class="wrap">
+        <div class="login">
+            <h2>Join</h2>
+            <div id="login_id" name = "login_id" class="login_id">
+                <form name="idForm" method="post">
+                <h4>id</h4>
+                <input type="id" id="id" placeholder="6 and less than 20.">
+                </form>
+            </div>
+            <div class="login_pw">
+                <h4>Password</h4>
+                <form name="pwForm" method="post">
+                <input type="password" id="password" placeholder="********" onchange="isSame()">
+                </form>
+            </div>
+            <div class="login_pw">
+                <h4>Password Confirm</h4>
+                <form name="pwForm" method="post">
+                <input type="password" id="password2" placeholder="********" onchange="isSame()">
+                </form>
+            </div>
+            <div class="login_Cer">
+                <h4>email</h4>
+                <form name="emailForm" method="post">
+                <input type="email" id="email" placeholder="ex) ~~~~@gmail.com">
+                </form>
+                <h4 id="cer" onclick=certify()>Certification 남은 시간 : </h4>
+                <form name="CerForm" method="post">
+                    <input type="text" id="Certification" placeholder="6 digit number" onchange=placeholderColor()>
+                </form>
+            </div>
+            <div class="login_etc">
+                <div class="login_Join">
+                    <a href="login.html">login</a>
+                </div>
+                <div class="inquiry">
+                <a href="inquiry.html">Inquary</a>
+            </div>
+            </div>
+            <div class = "join_submit">
+                <input id="JoinAlert" type="submit" value="submit">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

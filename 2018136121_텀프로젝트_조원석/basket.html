@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<head>
+    <!--header-->
+    <style>
+* {
+    margin: 0.2em;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+  }
+    #myheader { 
+        background-color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 190px;
+    }
+        embed { height: 220px;}
+        body{ padding-top: 180px;}
+
+    table {
+        margin: 0, auto;
+        border-collapse: collapse;
+        border-radius: 1rem;
+    }
+
+    th, td {
+        padding: 10px;
+        border: 1px solid lightblue;
+    }
+
+    th:hover, td:hover { background-color: lightcyan; }
+    </style>
+    <embed id="myheader" src="header.html" scrolling="no"
+        style="width: 100%; overflow: hidden;"></embed>
+
+    <script>
+        let itemCount = 1;
+        let moneyCount = 0;
+        // 돈의 총합
+        function spanchange(myValue) {
+             document.getElementById("sum").innerHTML = myValue;
+        }
+        // 결제 알림 및 main으로 이동
+        function myAlert(){
+            let v= confirm("총" + moneyCount + "원 결제를 하시겠습니까?");
+            if(v){
+                alert(moneyCount + "원 결제가 완료되었습니다.");
+                location.href="main.html";
+            }
+        }
+        // 테이블 태그 관련 동적 생성을 위한 함수
+        function inputItem(){ 
+            let item = document.getElementById('item');
+            let money = document.getElementById("money");
+
+            let new_tdTag1 = document.createElement('td');
+            let new_tdTag2 = document.createElement('td');
+            let new_trTag = document.createElement('tr');
+
+            
+            new_tdTag1.setAttribute('class', 'item');
+            new_tdTag2.setAttribute('class', 'money');
+            new_tdTag1.innerHTML = item.value;
+            new_tdTag2.innerHTML = money.value + " 원";
+            new_trTag.innerHTML = itemCount +"번 상품 ";          
+            
+            tagArea.appendChild(new_trTag);
+            new_trTag.appendChild(new_tdTag1);
+            new_trTag.appendChild(new_tdTag2);
+            new_trTag.appendChild(new_tdTag2);
+            itemCount++;
+            moneyCount += parseInt(money.value);
+            spanchange(moneyCount);
+        }
+
+
+       // 구현 예정
+        function plusItem(){
+
+        }
+        function deleteItem(){
+
+
+            itemCount--;
+        }
+    </script>
+</head>
+<body>
+    <h1>장바구니 페이지</h1> 
+    <label>상품 : </label>
+    <input type="text" id = "item" name = "item" placeholder="상품을 입력해주세요.">
+    <label>가격 : </label>
+    <input type="text" id = "money" name = "money" placeholder="가격을 입력해주세요.">
+    <input type="submit" id = "add" name = "add" value="추가" onclick="inputItem()">
+    <table border="1">
+        <tr id = "tagArea">
+        
+        </tr>
+    </table>
+
+    <span id = "sum">0</span><label>원</label> <input type="submit" id = "liquidate" name = "liquidate" value="결제" onclick=myAlert();>
+</body>
+</html>

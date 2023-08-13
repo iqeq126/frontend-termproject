@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+  }
+
+  body {
+    opacity: 1;
+    transition-duration: 2s;
+    transition-property: opacity;
+  }
+
+  body.fade {
+    opacity: 0;
+  }
+
+  #loginVideo{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    min-width: 100%;
+    height: auto;
+    min-height: auto;
+    z-index: -100;
+    background-size: cover;
+    -o-filter: blur(15px);
+    filter: blur(15px);
+    object-fit: cover;
+    }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  .wrap {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .login {
+    width: 400px;
+    height: 700px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  h2 {
+    color: rgb(129, 71, 255);
+    font-size: 2em;
+  }
+  .login_sns {
+    padding: 20px;
+    display: flex;
+  }
+  
+  .login_sns li {
+    padding: 0px 15px;
+  }
+  
+  .login_sns a {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 50px;
+    background: white;
+    font-size: 20px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4), -3px -3px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login_id, .login_pw, .login_Cer, .content_id, .content_id, .content_inquiry, .form-control {
+    margin-top: 20px;
+    width: 80%;
+  }
+  
+  .login_id input, .login_pw input, .login_Cer input, .content_id input, .form-group input {
+    width: 100%;
+    height: 50px;
+    border-radius: 30px;
+    margin-top: 10px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+    outline: none;
+  }
+  .content_inquiry textarea, .form-group textarea{
+    width: 100%;
+    height: 100px;
+    border-radius: 30px;
+    margin-top: 10px;
+    padding: 0px 20px;
+    border: 1px solid lightgray;
+    outline: none;
+  }
+  
+  
+  .login_etc {
+    padding: 10px;
+    width: 80%;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+  
+  .login_submit, .join_submit, .inquiry_submit, .btn-submit  {
+    margin-top: 50px;
+    width: 80%;
+  }
+  .login_submit input, .join_submit input, .inquiry_submit input, .btn-submit input {
+    width: 100%;
+    height: 50px;
+    border: 0;
+    outline: none;
+    border-radius: 40px;
+    background: linear-gradient(to left, rgb(102, 44, 238), rgb(102, 44, 238));
+    color: white;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+  }
